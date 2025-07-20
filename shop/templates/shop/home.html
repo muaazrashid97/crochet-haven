@@ -1,23 +1,74 @@
-{% extends 'shop/base.html' %}
-
-{% block title %}Home | Crochet Haven{% endblock %}
+{% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
-<p>Welcome to Crochet Haven 🧵</p>
-<p>This is your first page rendered with Django templates!</p>
+<div class="bg-[#fffdf9] text-gray-800">
 
-<p><a href="{% url 'product_list' %}">View All Products</a></p>
+  <!-- Hero Section -->
+  <section class="w-full bg-cover bg-center h-[60vh] flex items-center justify-center text-center px-6" style="background-image: url('{% static 'images/hero-banner.jpg' %}');">
+    <div class="bg-white/70 p-6 rounded-xl">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4 font-serif">Every Stitch Tells a Story</h1>
+      <p class="mb-6 text-lg">Handcrafted crochet goods made with love and detail</p>
+      <a href="/products/" class="bg-emerald-600 hover:bg-emerald-700 text-white py-2 px-6 rounded-full">Shop Now</a>
+    </div>
+  </section>
 
-<h2>Available Products:</h2>
-<ul>
-    {% for product in products %}
-        <li>
-            <a href="{% url 'product_detail' product.id %}">
-                {{ product.name }}
-            </a> - Rs. {{ product.price }}
-        </li>
-    {% empty %}
-        <li>No products available at the moment.</li>
-    {% endfor %}
-</ul>
+  <!-- Shop by Category -->
+  <section class="py-16 px-6 text-center">
+    <h2 class="text-3xl font-semibold mb-10 font-serif">Shop by Category</h2>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+      <div><img src="{% static 'images/category-toys.png' %}" alt="Toys" class="mx-auto w-20 mb-2"><p>Toys</p></div>
+      <div><img src="{% static 'images/category-wearables.png' %}" alt="Wearables" class="mx-auto w-20 mb-2"><p>Wearables</p></div>
+      <div><img src="{% static 'images/category-decor.png' %}" alt="Decor" class="mx-auto w-20 mb-2"><p>Decor</p></div>
+      <div><img src="{% static 'images/category-gifts.png' %}" alt="Gifts" class="mx-auto w-20 mb-2"><p>Gifts</p></div>
+    </div>
+  </section>
+
+  <!-- Featured Products -->
+  <section class="py-16 bg-[#fcf9f5] px-6">
+    <h2 class="text-3xl font-semibold mb-10 text-center font-serif">Featured Products</h2>
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+      {% for product in featured_products %}
+      <div class="bg-white rounded-xl shadow-md p-4 text-center">
+        <img src="{{ product.image.url }}" alt="{{ product.name }}" class="w-full h-40 object-cover mb-4 rounded">
+        <h3 class="text-lg font-semibold">{{ product.name }}</h3>
+        <p class="text-gray-500 mb-2">Rs. {{ product.price }}</p>
+        <a href="/products/{{ product.id }}/" class="text-emerald-600 hover:underline">View Product</a>
+      </div>
+      {% endfor %}
+    </div>
+  </section>
+
+  <!-- Why Choose Us -->
+  <section class="py-16 px-6 text-center">
+    <h2 class="text-3xl font-semibold mb-10 font-serif">Why Shop Ayné Crochet?</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div>
+        <img src="{% static 'images/icon-ethics.svg' %}" class="mx-auto w-12 mb-4">
+        <h3 class="font-semibold text-lg">Ethically Handmade</h3>
+        <p class="text-sm text-gray-600">Crafted by loving hands using natural materials.</p>
+      </div>
+      <div>
+        <img src="{% static 'images/icon-custom.svg' %}" class="mx-auto w-12 mb-4">
+        <h3 class="font-semibold text-lg">Personalized Gifting</h3>
+        <p class="text-sm text-gray-600">Custom pieces made for your loved ones.</p>
+      </div>
+      <div>
+        <img src="{% static 'images/icon-wash.svg' %}" class="mx-auto w-12 mb-4">
+        <h3 class="font-semibold text-lg">Washable & Durable</h3>
+        <p class="text-sm text-gray-600">Built to last through memories and messes.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="py-20 px-6 bg-[#fdf9f3]">
+    <div class="max-w-4xl mx-auto text-center">
+      <img src="{% static 'images/about-sister.jpg' %}" class="mx-auto rounded-xl mb-6 max-h-80 object-cover">
+      <h2 class="text-3xl font-semibold font-serif mb-4">Meet the Maker</h2>
+      <p class="text-gray-700 max-w-xl mx-auto">Ayné Crochet is a labor of love by my sister, whose hands bring joy to life one loop at a time. From cozy toys to heartfelt gifts, everything is made with passion and intention.</p>
+    </div>
+  </section>
+
+</div>
 {% endblock %}

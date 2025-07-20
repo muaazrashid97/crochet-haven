@@ -1,0 +1,4 @@
+//GitHub code changes push
+git add .
+git commit -m "Updated home page with new layout and Tailwind UI"
+git push
