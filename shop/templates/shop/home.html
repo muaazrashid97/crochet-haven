@@ -1,0 +1,23 @@
+{% extends 'shop/base.html' %}
+
+{% block title %}Home | Crochet Haven{% endblock %}
+
+{% block content %}
+<p>Welcome to Crochet Haven 🧵</p>
+<p>This is your first page rendered with Django templates!</p>
+
+<p><a href="{% url 'product_list' %}">View All Products</a></p>
+
+<h2>Available Products:</h2>
+<ul>
+    {% for product in products %}
+        <li>
+            <a href="{% url 'product_detail' product.id %}">
+                {{ product.name }}
+            </a> - Rs. {{ product.price }}
+        </li>
+    {% empty %}
+        <li>No products available at the moment.</li>
+    {% endfor %}
+</ul>
+{% endblock %}

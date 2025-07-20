@@ -1,0 +1,15 @@
+{% extends 'shop/base.html' %}
+
+{% block title %}{{ product.name }} | Crochet Haven{% endblock %}
+
+{% block content %}
+    <h2>{{ product.name }}</h2>
+    <p><strong>Price:</strong> Rs. {{ product.price }}</p>
+    <p><strong>Description:</strong> {{ product.description }}</p>
+    <p><a href="{% url 'home' %}">← Back to products</a></p>
+
+    {% if product.image %}
+    <img src="{{ product.image.url }}" alt="{{ product.name }}" style="max-width: 300px; border-radius: 10px;">
+    {% endif %}
+
+{% endblock %}

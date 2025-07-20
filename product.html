@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>View Product - My Sister's Crochet Shop</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: #fff8f0;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .product-container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .image-slider {
+            position: relative;
+            max-width: 300px;
+            margin: 0 auto 20px;
+            overflow: hidden;
+        }
+
+        .slider-image {
+            display: none;
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        .slider-image.active {
+            display: block;
+        }
+
+        .prev,
+        .next {
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 10px;
+            margin-top: -22px;
+            color: white;
+            font-weight: bold;
+            background-color: rgba(0, 0, 0, 0.5);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .prev {
+            left: 0;
+        }
+
+        .next {
+            right: 0;
+        }
+
+        h1 {
+            color: #b76e79;
+        }
+
+        p {
+            font-size: 1.2em;
+        }
+
+        .price {
+            font-size: 1.5em;
+            color: #b76e79;
+            margin: 20px 0;
+        }
+
+        button.add-to-cart {
+            background-color: #b76e79;
+            color: white;
+            padding: 10px 20px;
+            font-size: 1.1em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button.add-to-cart:hover {
+            background-color: #a35e69;
+        }
+    </style>
+</head>
+
+<body>
+    
+    <div class="product-container">
+        <h1>Product Title Here</h1>
+        <p class="description">Product description will be loaded here...</p>
+        <div class="price">Product price will be loaded here...</div>
+      
+        <div class="image-slider">
+          <!-- Images and buttons will be dynamically inserted here -->
+        </div>
+      </div>
+      
+    <script>
+        const products = {
+            "pastel-rose-bouquet": {
+                title: "Pastel Rose Crochet Bouquet",
+                description: "Delicate crocheted roses in soft pastels — an everlasting touch of charm.",
+                price: "800 Rs.",
+                images: [
+                    "images/pastel_rose_bouquet/pastel_rose_bouquet1.png",
+                    "images/pastel_rose_bouquet/pastel_rose_bouquet2.png",
+                    "images/pastel_rose_bouquet/pastel_rose_bouquet3.png"
+                ]
+            },
+
+            "sunflower-keychain": {
+                title: "Sunflower Keychain",
+                description: "Carry a little sunshine with you everywhere you go! Handmade with love, this bright sunflower keychain adds a cheerful touch to your bags, keys, or gifts.",
+                price: "350 Rs.",
+                images: [
+                    "images/sunflower_keychain/sunflower_keychain1.jpeg",
+                    "images/sunflower_keychain/sunflower_keychain2.jpeg",
+                    "images/sunflower_keychain/sunflower_keychain3.jpeg"
+                ]
+            },
+
+            "crochet-airpod-cover": {
+                title: "Crochet Airpod Cover",
+                description: "Protect your AirPods in style! Handcrafted and customizable, our crochet covers keep your earbuds safe — with a touch of cozy charm.",
+                price: "500 Rs.",
+                images: [
+                    "images/airpod_cover/airpod_cover1.jpeg",
+                    "images/airpod_cover/airpod_cover2.jpeg"
+                ]
+            },
+
+            "pink-rose-bouquet": {
+                title: "Pink Rose Crochet Bouquet",
+                description: "A forever bloom for someone special! Handcrafted with soft yarn and love, this customizable pink rose bouquet is the perfect gift for any occasion.",
+                price: "1,000 Rs.",
+                images: [
+                    "images/pink_rose_bouquet/pink_rose_bouquet1.jpeg",
+                    "images/pink_rose_bouquet/pink_rose_bouquet2.jpeg",
+                    "images/pink_rose_bouquet/pink_rose_bouquet3.jpeg"
+                ]
+            },
+
+            "crochet-fingerless-gloves": {
+                title: "Crochet Fingerless Gloves",
+                description: "Stay cozy and stylish! These handmade fingerless gloves keep your hands warm while giving you the freedom to text, type, and create with ease.",
+                price: "800 Rs.",
+                images: [
+                    "images/fingerless_gloves/fingerless_gloves1.jpeg",
+                    "images/fingerless_gloves/fingerless_gloves2.jpeg",
+                    "images/fingerless_gloves/fingerless_gloves3.jpeg",
+                    "images/fingerless_gloves/fingerless_gloves4.jpeg"
+                ]
+            },
+
+            "heart-patterned-crochet-pouch": {
+                title: "Heart-Patterned Crochet Pouch",
+                description: "Add a little love to your school days! This handmade crochet pouch, featuring adorable heart-shaped patterns, is perfect for carrying pens, pencils, and all your creative essentials.",
+                price: "700 Rs.",
+                images: [
+                    "images/heart_pouch/heart_pouch1.jpeg",
+                    "images/heart_pouch/heart_pouch2.jpeg",
+                    "images/heart_pouch/heart_pouch3.jpeg",
+                    "images/heart_pouch/heart_pouch4.jpeg"
+                ]
+            }
+        };
+    </script>
+
+    <script>
+        // Read URL parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        const productKey = urlParams.get('product');
+
+        // Find product from products object
+        const product = products[productKey];
+
+        if (product) {
+            // Update Title
+            document.querySelector('h1').textContent = product.title;
+
+            // Update Description
+            document.querySelector('p.description').textContent = product.description;
+
+            // Update Price
+            document.querySelector('div.price').textContent = product.price;
+
+            // Update Images in Slider
+            const slider = document.querySelector('.image-slider');
+            slider.innerHTML = ''; // Clear old images
+
+            product.images.forEach((src, index) => {
+                const img = document.createElement('img');
+                img.src = src;
+                img.alt = product.title + " " + (index + 1);
+                img.className = "slider-image" + (index === 0 ? " active" : "");
+                slider.appendChild(img);
+            });
+
+            // Add Prev/Next Buttons
+            const prevBtn = document.createElement('button');
+            prevBtn.className = "prev";
+            prevBtn.innerHTML = "&#10094;";
+            slider.appendChild(prevBtn);
+
+            const nextBtn = document.createElement('button');
+            nextBtn.className = "next";
+            nextBtn.innerHTML = "&#10095;";
+            slider.appendChild(nextBtn);
+
+            // Add Slider Functionality
+            let currentIndex = 0;
+            const images = slider.querySelectorAll('.slider-image');
+
+            function showImage(index) {
+                images.forEach((img, i) => {
+                    img.classList.toggle('active', i === index);
+                });
+            }
+
+            prevBtn.addEventListener('click', () => {
+                currentIndex = (currentIndex === 0) ? images.length - 1 : currentIndex - 1;
+                showImage(currentIndex);
+            });
+
+            nextBtn.addEventListener('click', () => {
+                currentIndex = (currentIndex + 1) % images.length;
+                showImage(currentIndex);
+            });
+
+            showImage(currentIndex); // Initialize
+
+        } else {
+            // If product not found
+            document.querySelector('h1').textContent = "Product Not Found";
+            document.querySelector('p.description').textContent = "";
+            document.querySelector('div.price').textContent = "";
+        }
+    </script>
+
+</body>
+
+</html>

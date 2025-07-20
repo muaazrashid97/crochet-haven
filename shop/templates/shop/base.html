@@ -1,0 +1,19 @@
+<!-- shop/templates/shop/base.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Crochet Haven 🧵</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'shop/style.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Crochet Haven 🧶</h1>
+    </header>
+
+    {% block content %}
+    <!-- This block will be replaced in child templates -->
+    {% endblock %}
+</body>
+</html>

@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>My Sister's Crochet Shop</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #fff8f0;
+      font-family: 'Quicksand', sans-serif;
+    }
+
+    h1,
+    h2 {
+      color: #b76e79;
+    }
+
+    div {
+      border: 1px solid #ddd;
+      padding: 15px;
+      margin: 10px 0;
+      background-color: #fff;
+      border-radius: 10px;
+    }
+
+    img {
+      width: 100%;
+      max-width: 200px;
+      border-radius: 8px;
+    }
+
+    button {
+      background-color: #b76e79;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1em;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    button:hover {
+      background-color: #a35e69;
+    }
+
+    .product-list {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .product-card {
+      border: 1px solid #ddd;
+      padding: 15px;
+      background-color: #fff;
+      border-radius: 10px;
+      width: 250px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+      transition: transform 0.2s ease;
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px);
+    }
+
+    #cart-container {
+      font-weight: bold;
+      margin-bottom: 20px;
+      color: #b76e79;
+      font-size: 1.2em;
+    }
+
+    form {
+      margin-top: 30px;
+      background-color: #fff5f7;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      max-width: 400px;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      margin-top: 5px;
+    }
+
+    label {
+      font-weight: 600;
+      color: #b76e79;
+    }
+
+    .image-slider {
+      position: relative;
+      max-width: 200px;
+      margin: auto;
+      overflow: hidden;
+    }
+
+    .slider-image {
+      display: none;
+      width: 100%;
+      border-radius: 8px;
+    }
+
+    .slider-image.active {
+      display: block;
+    }
+
+    .prev,
+    .next {
+      position: absolute;
+      top: 50%;
+      width: auto;
+      padding: 10px;
+      margin-top: -22px;
+      color: white;
+      font-weight: bold;
+      background-color: rgba(0, 0, 0, 0.5);
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .prev {
+      left: 0;
+    }
+
+    .next {
+      right: 0;
+    }
+
+    a.product-link {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .cover-image {
+      width: 100%;
+      max-width: 250px;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="cart-container">
+    <span style="font-size: 1.4em;">🛒</span>
+    <span id="cart-count">0</span> items in cart
+  </div>
+
+  <h1>Welcome to My Sister’s Crochet Shop!</h1>
+
+  <p>Handmade with love 🧶</p>
+
+  <img src="https://via.placeholder.com/300" alt="Crochet item">
+
+  <h2>Our Bestsellers</h2>
+  <div class="product-list">
+    <a href="product.html?product=pastel-rose-bouquet" class="product-link">
+    <div class="product-card">
+      <h3>Pastel Rose Crochet Bouquet</h3>
+
+      <img src="images/pastel_rose_bouquet/pastel_rose_bouquet1.png" alt="Pastel Rose Bouquet" class="cover-image">
+
+      <p>Delicate crocheted roses in soft pastels — an everlasting touch of charm.</p>
+      <p><strong>Price:</strong> 800 Rs.</p>
+    </div>
+    </a>
+
+    <a href="product.html?product=sunflower-keychain" class="product-link">
+    <div class="product-card">
+      <h3>Sunflower Keychain</h3>
+
+      <img src="images/sunflower_keychain/sunflower_keychain1.jpeg" alt="Sunflower Keychain" class="cover-image">
+
+      <p>Carry a little sunshine with you everywhere you go! Handmade with love, this bright sunflower keychain adds a
+        cheerful touch to your bags, keys, or gifts.</p>
+      <p><strong>Price:</strong> 350 Rs.</p>
+    </div>
+    </a>
+
+    <a href="product.html?product=crochet-airpod-cover" class="product-link">
+    <div class="product-card">
+      <h3>Crochet Airpod Cover</h3>
+
+      <img src="images/airpod_cover/airpod_cover1.jpeg" alt="Airpod Cover" class="cover-image">
+
+      <p>Protect your AirPods in style! Handcrafted and customizable, our crochet covers keep your earbuds safe — with a
+        touch of cozy charm.</p>
+      <p><strong>Price:</strong> 500 Rs.</p>
+    </div>
+    </a>
+
+    <a href="product.html?product=pink-rose-bouquet" class="product-link">
+    <div class="product-card">
+      <h3>Pink Rose Crochet Bouquet</h3>
+
+      <img src="images/pink_rose_bouquet/pink_rose_bouquet1.jpeg" alt="Pink Rose Bouquet" class="cover-image">
+
+      <p>A forever bloom for someone special! Handcrafted with soft yarn and love, this customizable pink rose bouquet
+        is the perfect gift for any occasion.</p>
+      <p><strong>Price:</strong> 1,000 Rs.</p>
+    </div>
+    </a>
+
+    <a href="product.html?product=crochet-fingerless-gloves" class="product-link">
+    <div class="product-card">
+      <h3>Crochet Fingerless Gloves</h3>
+
+      <img src="images/fingerless_gloves/fingerless_gloves1.jpeg" alt="Fingerless Gloves" class="cover-image">
+
+      <p>Stay cozy and stylish! These handmade fingerless gloves keep your hands warm while giving you the freedom to
+        text, type, and create with ease.</p>
+      <p><strong>Price:</strong> 800 Rs.</p>
+    </div>
+    </a>
+
+    <a href="product.html?product=heart-patterned-crochet-pouch" class="product-link">
+      <div class="product-card">
+        <h3>Heart-Patterned Crochet Pouch</h3>
+
+        <img src="images/heart_pouch/heart_pouch1.jpeg" alt="Heart Pouch" class="cover-image">
+
+        <p>Add a little love to your school days! This handmade crochet pouch, featuring adorable heart-shaped patterns,
+          is perfect for carrying pens, pencils, and all your creative essentials.</p>
+        <p><strong>Price:</strong> 700 Rs.</p>
+      </div>
+    </a>
+  </div>
+
+  <h2>Custom Orders</h2>
+  <p>Want something special? Send us a request!</p>
+
+  <form id="contact-form">
+    <label for="name">Your Name</label><br>
+    <input type="text" id="name" name="name" required><br><br>
+
+    <label for="email">Your Email</label><br>
+    <input type="email" id="email" name="email" required><br><br>
+
+    <label for="message">Your Request</label><br>
+    <textarea id="message" name="message" rows="4" required></textarea><br><br>
+
+    <button type="submit">Send Message</button>
+  </form>
+
+  <script>
+    let count = localStorage.getItem('cartCount') || 0;
+    const cartCount = document.getElementById("cart-count");
+    cartCount.textContent = count;
+
+    const buttons = document.querySelectorAll(".add-to-cart");
+
+    buttons.forEach(button => {
+      button.addEventListener("click", () => {
+        count++;
+        cartCount.textContent = count;
+        localStorage.setItem('cartCount', count);
+      });
+    });
+  </script>
+
+  <script>
+    document.getElementById("contact-form").addEventListener("submit", function (e) {
+      e.preventDefault();
+      window.location.href = "thankyou.html"; // redirect to Thank You page
+    });
+  </script>
+
+  <script>
+    document.querySelectorAll('.image-slider').forEach(slider => {
+      let currentIndex = 0;
+      const images = slider.querySelectorAll('.slider-image');
+      const prevBtn = slider.querySelector('.prev');
+      const nextBtn = slider.querySelector('.next');
+
+      function showImage(index) {
+        images.forEach((img, i) => {
+          img.classList.toggle('active', i === index);
+        });
+      }
+
+      prevBtn.addEventListener('click', () => {
+        currentIndex = (currentIndex === 0) ? images.length - 1 : currentIndex - 1;
+        showImage(currentIndex);
+      });
+
+      nextBtn.addEventListener('click', () => {
+        currentIndex = (currentIndex + 1) % images.length;
+        showImage(currentIndex);
+      });
+
+      showImage(currentIndex); // Initialize
+    });
+  </script>
+
+
+</body>
+
+</html>
