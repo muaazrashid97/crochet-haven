@@ -1,13 +1,16 @@
 services:
   - type: web
     name: crochet-haven
-    runtime: python
-    buildCommand: "pip install -r requirements.txt"
-    startCommand: "gunicorn crochethaven.wsgi:application"
+    env: python
+    buildCommand: |
+      pip install -r requirements.txt
+      python manage.py collectstatic --noinput
+    startCommand: gunicorn crochethaven.wsgi:application
     envVars:
       - key: DJANGO_SETTINGS_MODULE
         value: crochethaven.settings
       - key: PYTHON_VERSION
         value: 3.11
       - key: DEBUG
-        value: True
+        value: False
+        
