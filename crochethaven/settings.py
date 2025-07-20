@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure--v3f952321#8_(3^v+be7d(4vs6db)2&1ku=_z&8!!e!4z)#=g
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['crochet-haven.onrender.com']
 
 
 # Application definition
