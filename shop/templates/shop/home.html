@@ -5,24 +5,25 @@
 <div class="bg-[#fffdf9] text-gray-800">
 
   <!-- Hero Section -->
-  <section class="w-full bg-cover bg-center h-[60vh] flex items-center justify-center text-center px-6" style="background-image: url('{% static 'images/hero-banner.jpg' %}');">
-    <div class="bg-white/70 p-6 rounded-xl">
-      <h1 class="text-4xl md:text-5xl font-bold mb-4 font-serif">Every Stitch Tells a Story</h1>
-      <p class="mb-6 text-lg">Handcrafted crochet goods made with love and detail</p>
-      <a href="/products/" class="bg-emerald-600 hover:bg-emerald-700 text-white py-2 px-6 rounded-full">Shop Now</a>
-    </div>
-  </section>
+  <section class="text-center py-12 bg-[#fffdf9]">
+  <h1 class="text-4xl md:text-6xl font-bold font-serif text-gray-900">Every Stitch Tells a Story</h1>
+  <p class="mt-4 text-lg text-gray-700">Handcrafted crochet goods made with love and detail</p>
+  <a href="#" class="mt-6 inline-block bg-purple-700 hover:bg-purple-800 text-white px-6 py-3 rounded-full text-sm font-semibold shadow-md transition">Shop Now</a>
+</section>
+
 
   <!-- Shop by Category -->
-  <section class="py-16 px-6 text-center">
-    <h2 class="text-3xl font-semibold mb-10 font-serif">Shop by Category</h2>
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-      <div><img src="{% static 'images/category-toys.png' %}" alt="Toys" class="mx-auto w-20 mb-2"><p>Toys</p></div>
-      <div><img src="{% static 'images/category-wearables.png' %}" alt="Wearables" class="mx-auto w-20 mb-2"><p>Wearables</p></div>
-      <div><img src="{% static 'images/category-decor.png' %}" alt="Decor" class="mx-auto w-20 mb-2"><p>Decor</p></div>
-      <div><img src="{% static 'images/category-gifts.png' %}" alt="Gifts" class="mx-auto w-20 mb-2"><p>Gifts</p></div>
+  <section class="py-12 px-6 bg-white">
+  <h2 class="text-2xl font-bold text-purple-900 text-center mb-8">Shop by Category</h2>
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-6xl mx-auto">
+    <div class="text-center">
+      <img src="/media/toys.jpg" class="h-32 w-32 mx-auto object-cover rounded-lg shadow" />
+      <p class="mt-2 font-medium">Toys</p>
     </div>
-  </section>
+    <!-- Repeat for other categories -->
+  </div>
+</section>
+
 
   <!-- Featured Products -->
   <section class="py-16 bg-[#fcf9f5] px-6">
@@ -41,13 +42,13 @@
 
   <!-- Why Choose Us -->
   <section class="py-16 px-6 text-center">
-    <h2 class="text-3xl font-semibold mb-10 font-serif">Why Shop Ayné Crochet?</h2>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      <div>
-        <img src="{% static 'images/icon-ethics.svg' %}" class="mx-auto w-12 mb-4">
-        <h3 class="font-semibold text-lg">Ethically Handmade</h3>
-        <p class="text-sm text-gray-600">Crafted by loving hands using natural materials.</p>
-      </div>
+    <h2 class="text-2xl font-bold text-purple-900 text-center mb-8">Why Shop Ayné Crochet?</h2>
+  <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto text-center">
+    <div>
+      <img src="/media/icon1.png" class="mx-auto h-12 mb-4" />
+      <h3 class="font-semibold text-lg">Ethically Handmade</h3>
+      <p class="text-sm text-gray-600">Crafted by loving hands using natural materials.</p>
+    </div>
       <div>
         <img src="{% static 'images/icon-custom.svg' %}" class="mx-auto w-12 mb-4">
         <h3 class="font-semibold text-lg">Personalized Gifting</h3>
