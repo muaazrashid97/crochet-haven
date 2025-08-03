@@ -1,4 +1,11 @@
-//GitHub code changes push
+# GitHub code changes push
 git add .
 git commit -m "Updated home page with new layout and Tailwind UI"
 git push
+
+# Local server code changes push
+python manage.py runserver
+
+# Activate the virtual environment
+# For Windows:
+env\Scripts\activate

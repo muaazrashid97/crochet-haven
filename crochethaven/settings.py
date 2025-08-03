@@ -12,6 +12,14 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 
 import os
 
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'dnpzhdwpo',
+    'API_KEY': '762297346883799',
+    'API_SECRET': 'g93FRd049fMnNhQG2_c-C0mUYkk',
+}
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -40,6 +48,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'cloudinary',
+    'cloudinary_storage',
+    'storages',
 ]
 
 MIDDLEWARE = [
