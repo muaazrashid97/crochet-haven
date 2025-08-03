@@ -6,11 +6,37 @@
     <title>Crochet Haven 🧵</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'shop/style.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Fonts from Google -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="bg-white text-gray-800 font-[Inter]">
     <header>
         <h1>Crochet Haven 🧶</h1>
     </header>
+
+<nav class="bg-white shadow-sm">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between h-16 items-center">
+      <!-- Logo + Brand Name -->
+      <div class="flex items-center space-x-2">
+        <img src="{% static 'images/logo.png' %}" class="h-10 w-10" alt="Ayné Crochet Logo">
+        <span class="text-2xl font-[Playfair_Display] text-[#4b6a74] font-semibold">Ayné Crochet</span>
+      </div>
+
+      <!-- Nav Links -->
+      <div class="hidden md:flex space-x-6">
+        <a href="{% url 'home' %}" class="text-gray-700 hover:text-[#4b6a74] transition">Home</a>
+        <a href="{% url 'product_list' %}" class="text-gray-700 hover:text-[#4b6a74] transition">Products</a>
+        <a href="#" class="text-gray-700 hover:text-[#4b6a74] transition">About</a>
+        <a href="#" class="text-gray-700 hover:text-[#4b6a74] transition">Contact</a>
+      </div>
+
+      <!-- Mobile Menu Button (optional for later) -->
+    </div>
+  </div>
+</nav>
+
 
     {% block content %}
     <!-- This block will be replaced in child templates -->

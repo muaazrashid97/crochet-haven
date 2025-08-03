@@ -2,74 +2,108 @@
 {% load static %}
 
 {% block content %}
-<div class="bg-[#fffdf9] text-gray-800">
+<div class="bg-white text-gray-800">
 
   <!-- Hero Section -->
-  <section class="text-center py-12 bg-[#fffdf9]">
-  <h1 class="text-4xl md:text-6xl font-bold font-serif text-gray-900">Every Stitch Tells a Story</h1>
-  <p class="mt-4 text-lg text-gray-700">Handcrafted crochet goods made with love and detail</p>
-  <a href="#" class="mt-6 inline-block bg-purple-700 hover:bg-purple-800 text-white px-6 py-3 rounded-full text-sm font-semibold shadow-md transition">Shop Now</a>
-</section>
-
-
-  <!-- Shop by Category -->
-  <section class="py-12 px-6 bg-white">
-  <h2 class="text-2xl font-bold text-purple-900 text-center mb-8">Shop by Category</h2>
-  <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-6xl mx-auto">
-    <div class="text-center">
-      <img src="/media/toys.jpg" class="h-32 w-32 mx-auto object-cover rounded-lg shadow" />
-      <p class="mt-2 font-medium">Toys</p>
+  <section class="py-16">
+    <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center px-6">
+      <div>
+        <h1 class="text-4xl md:text-5xl font-[Playfair_Display] font-bold text-[#2a2a2a] leading-tight">Every stitch tells a story</h1>
+        <p class="mt-4 text-lg text-gray-600 max-w-md">Lovingly handcrafted crochet creations that spark joy — stitched with intention and soul.</p>
+        <a href="{% url 'product_list' %}" class="mt-6 inline-block bg-[#4b6a74] hover:bg-[#3c5760] text-white px-6 py-3 rounded-full font-medium transition">Shop Now</a>
+      </div>
+      <div>
+        <img src="{% static 'images/hero.jpg' %}" alt="Crochet banner" class="rounded-lg shadow-lg object-cover w-full max-h-[400px]">
+      </div>
     </div>
-    <!-- Repeat for other categories -->
+  </section>
+
+  <!-- Featured Products -->
+  <section class="py-20 bg-[#f9f9f9]">
+  <div class="max-w-7xl mx-auto px-6">
+    <h2 class="text-3xl font-[Playfair_Display] text-[#2a2a2a] font-semibold mb-10">Featured Products</h2>
+    
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+      {% for product in products %}
+      <div class="bg-white rounded-xl shadow p-4 hover:shadow-md transition">
+        <img src="{{ product.image.url }}" alt="{{ product.name }}" class="w-full h-48 object-cover rounded-md mb-4">
+        <h3 class="text-lg font-semibold">{{ product.name }}</h3>
+        <p class="text-sm text-gray-600">{{ product.description|truncatechars:80 }}</p>
+        <p class="text-gray-500 mt-2 font-medium">Rs. {{ product.price }}</p>
+        <a href="/products/{{ product.id }}/" class="text-[#4b6a74] hover:underline mt-2 inline-block">View Product</a>
+      </div>
+      {% empty %}
+      <p class="col-span-3 text-center text-gray-500">No products available yet.</p>
+      {% endfor %}
+    </div>
   </div>
 </section>
 
 
-  <!-- Featured Products -->
-  <section class="py-16 bg-[#fcf9f5] px-6">
-    <h2 class="text-3xl font-semibold mb-10 text-center font-serif">Featured Products</h2>
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-      {% for product in featured_products %}
-      <div class="bg-white rounded-xl shadow-md p-4 text-center">
-        <img src="{{ product.image.url }}" alt="{{ product.name }}" class="w-full h-40 object-cover mb-4 rounded">
-        <h3 class="text-lg font-semibold">{{ product.name }}</h3>
-        <p class="text-gray-500 mb-2">Rs. {{ product.price }}</p>
-        <a href="/products/{{ product.id }}/" class="text-emerald-600 hover:underline">View Product</a>
+  <!-- Section: Story / Craft -->
+  <section class="py-20">
+    <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center px-6">
+      <div>
+        <h3 class="text-2xl font-[Playfair_Display] mb-2 text-[#4b6a74]">Crafted with Intention</h3>
+        <p class="text-gray-600">Each piece is handmade by my sister — designed to be thoughtful, unique, and cozy. We believe in slow crafting, meaningful gifting, and heartfelt details.</p>
       </div>
-      {% endfor %}
+      <img src="{% static 'images/craft.jpg' %}" alt="Craft detail" class="rounded-xl shadow-md object-cover w-full max-h-96">
     </div>
   </section>
 
-  <!-- Why Choose Us -->
-  <section class="py-16 px-6 text-center">
-    <h2 class="text-2xl font-bold text-purple-900 text-center mb-8">Why Shop Ayné Crochet?</h2>
-  <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto text-center">
-    <div>
-      <img src="/media/icon1.png" class="mx-auto h-12 mb-4" />
-      <h3 class="font-semibold text-lg">Ethically Handmade</h3>
-      <p class="text-sm text-gray-600">Crafted by loving hands using natural materials.</p>
-    </div>
+  <!-- Section: Gift or Purpose -->
+  <section class="py-20 bg-[#f9f9f9]">
+    <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center px-6">
+      <img src="{% static 'images/purpose.jpg' %}" alt="Crochet basket" class="rounded-xl shadow-md object-cover w-full max-h-96">
       <div>
-        <img src="{% static 'images/icon-custom.svg' %}" class="mx-auto w-12 mb-4">
-        <h3 class="font-semibold text-lg">Personalized Gifting</h3>
-        <p class="text-sm text-gray-600">Custom pieces made for your loved ones.</p>
-      </div>
-      <div>
-        <img src="{% static 'images/icon-wash.svg' %}" class="mx-auto w-12 mb-4">
-        <h3 class="font-semibold text-lg">Washable & Durable</h3>
-        <p class="text-sm text-gray-600">Built to last through memories and messes.</p>
+        <h3 class="text-2xl font-[Playfair_Display] mb-2 text-[#4b6a74]">Gifts that Speak</h3>
+        <p class="text-gray-600">Whether it’s a sunflower keychain or a bouquet of pastel roses — every creation carries personality. These aren’t just crochet items; they’re hugs in yarn form.</p>
       </div>
     </div>
   </section>
 
-  <!-- About Section -->
-  <section class="py-20 px-6 bg-[#fdf9f3]">
-    <div class="max-w-4xl mx-auto text-center">
-      <img src="{% static 'images/about-sister.jpg' %}" class="mx-auto rounded-xl mb-6 max-h-80 object-cover">
-      <h2 class="text-3xl font-semibold font-serif mb-4">Meet the Maker</h2>
-      <p class="text-gray-700 max-w-xl mx-auto">Ayné Crochet is a labor of love by my sister, whose hands bring joy to life one loop at a time. From cozy toys to heartfelt gifts, everything is made with passion and intention.</p>
+  <!-- Testimonials or Questions -->
+  <section class="py-20">
+    <div class="max-w-7xl mx-auto px-6 text-center">
+      <h3 class="text-2xl font-[Playfair_Display] text-[#2a2a2a] mb-10">Why People Love Ayné</h3>
+      <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
+        <div class="border rounded-lg p-6 bg-white shadow-sm hover:shadow-md transition">
+          <p class="text-gray-700 italic">"I couldn’t believe it was handmade!"</p>
+        </div>
+        <div class="border rounded-lg p-6 bg-white shadow-sm hover:shadow-md transition">
+          <p class="text-gray-700 italic">"A bundle full of intention and joy."</p>
+        </div>
+        <div class="border rounded-lg p-6 bg-white shadow-sm hover:shadow-md transition">
+          <p class="text-gray-700 italic">"So soothing, visually and spiritually."</p>
+        </div>
+      </div>
     </div>
   </section>
+
+  <!-- Footer -->
+  <footer class="bg-[#f0f0f0] py-10">
+    <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-3 gap-8 text-sm text-gray-600">
+      <div>
+        <h4 class="font-semibold text-[#4b6a74] mb-2">Ayné Crochet</h4>
+        <p>Crafted with love in every loop.</p>
+      </div>
+      <div>
+        <h4 class="font-semibold mb-2">Explore</h4>
+        <ul class="space-y-1">
+          <li><a href="{% url 'home' %}" class="hover:underline">Home</a></li>
+          <li><a href="{% url 'product_list' %}" class="hover:underline">Shop</a></li>
+          <li><a href="#" class="hover:underline">About</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-semibold mb-2">Social</h4>
+        <ul class="space-y-1">
+          <li><a href="#" class="hover:underline">Instagram</a></li>
+          <li><a href="#" class="hover:underline">Email</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
 
 </div>
 {% endblock %}
