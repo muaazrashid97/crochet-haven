@@ -11,31 +11,30 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body class="bg-white text-gray-800 font-[Inter]">
-    <header>
-        <h1>Crochet Haven 🧶</h1>
-    </header>
 
-<nav class="bg-white shadow-sm">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex justify-between h-16 items-center">
-      <!-- Logo + Brand Name -->
-      <div class="flex items-center space-x-2">
-        <img src="{% static 'images/logo.png' %}" class="h-10 w-10" alt="Ayné Crochet Logo">
-        <span class="text-2xl font-[Playfair_Display] text-[#4b6a74] font-semibold">Ayné Crochet</span>
-      </div>
+<!-- NAVBAR — Ayné Crochet -->
+<header class="sticky top-0 z-50 bg-white border-b border-gray-200 shadow-sm">
+  <nav class="mx-auto max-w-7xl h-24 px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+    
+<!-- Logo (Brand) -->
+<a href="{% url 'home' %}" class="flex items-center gap-3">
+  <img
+    src="https://res.cloudinary.com/dnpzhdwpo/image/upload/f_auto,q_auto,w_320/v1760828109/ayne-crochet-logo-transparent_bov33k.png"
+    alt="Ayné Crochet logo"
+    class="h-16 md:h-20 w-auto"
+    loading="eager"
+    fetchpriority="high">
+</a>
 
-      <!-- Nav Links -->
-      <div class="hidden md:flex space-x-6">
-        <a href="{% url 'home' %}" class="text-gray-700 hover:text-[#4b6a74] transition">Home</a>
-        <a href="{% url 'product_list' %}" class="text-gray-700 hover:text-[#4b6a74] transition">Products</a>
-        <a href="#" class="text-gray-700 hover:text-[#4b6a74] transition">About</a>
-        <a href="#" class="text-gray-700 hover:text-[#4b6a74] transition">Contact</a>
-      </div>
-
-      <!-- Mobile Menu Button (optional for later) -->
+    <!-- Navigation Links -->
+    <div class="flex items-center gap-8">
+      <a href="{% url 'home' %}" class="text-[color:var(--ink)] hover:text-[#86A9C6] font-medium transition">Home</a>
+      <a href="{% url 'product_list' %}" class="text-[color:var(--ink)] hover:text-[#86A9C6] font-medium transition">Products</a>
+      <a href="#" class="text-[color:var(--ink)] hover:text-[#86A9C6] font-medium transition">About</a>
+      <a href="#" class="text-[color:var(--ink)] hover:text-[#86A9C6] font-medium transition">Contact</a>
     </div>
-  </div>
-</nav>
+  </nav>
+</header>
 
 
     {% block content %}

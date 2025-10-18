@@ -4,19 +4,85 @@
 {% block content %}
 <div class="bg-white text-gray-800">
 
-  <!-- Hero Section -->
-  <section class="py-16">
-    <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center px-6">
-      <div>
-        <h1 class="text-4xl md:text-5xl font-[Playfair_Display] font-bold text-[#2a2a2a] leading-tight">Every stitch tells a story</h1>
-        <p class="mt-4 text-lg text-gray-600 max-w-md">Lovingly handcrafted crochet creations that spark joy — stitched with intention and soul.</p>
-        <a href="{% url 'product_list' %}" class="mt-6 inline-block bg-[#4b6a74] hover:bg-[#3c5760] text-white px-6 py-3 rounded-full font-medium transition">Shop Now</a>
-      </div>
-      <div>
-        <img src="{% static 'images/hero.jpg' %}" alt="Crochet banner" class="rounded-lg shadow-lg object-cover w-full max-h-[400px]">
-      </div>
+<!-- HERO — Ayné Crochet (Hands-at-Work Macro, refined) -->
+<section class="relative isolate overflow-hidden">
+  <style>
+    :root{
+      --ink:#21464B;   /* deep teal from logo */
+      --sky:#86A9C6;   /* soft blue */
+      --cream:#F4F1EC; /* neutral */
+    }
+    @media (max-width: 640px){
+      .hero-pad { padding-top: 4rem; padding-bottom: 4rem; }
+    }
+  </style>
+
+  <!-- Background color while image loads -->
+  <div class="absolute inset-0 bg-[color:var(--sky)]"></div>
+
+  <!-- Responsive banner from Cloudinary -->
+  <picture>
+    <!-- Mobile: 4:5 crop (same asset ok for now) -->
+    <source
+      media="(max-width: 640px)"
+      srcset="https://res.cloudinary.com/dnpzhdwpo/image/upload/f_auto,q_auto,w_1200,ar_4:5,c_fill,g_auto,z_0.85/hero-banner_n66evz.jpg">
+    <!-- Desktop: 16:9 crop -->
+    <img
+      src="https://res.cloudinary.com/dnpzhdwpo/image/upload/f_auto,q_auto,w_1920,ar_16:9,c_fill,g_auto,z_0.85/hero-banner_n66evz.jpg"
+      alt="Hands crocheting soft blue yarn on cream linen; macro detail of hook and stitches"
+      class="absolute inset-0 h-full w-full object-cover object-[50%_25%] opacity-85"
+      decoding="async" fetchpriority="high" sizes="100vw">
+      <!-- object-[50%_25%] pans the crop slightly upward to show the hook more -->
+  </picture>
+
+  <!-- Legibility gradient -->
+  <div class="absolute inset-0 bg-gradient-to-tr from-black/45 via-black/20 to-transparent"></div>
+
+  <!-- Subtle brand stitch texture -->
+  <div class="pointer-events-none absolute inset-0 opacity-10 mix-blend-multiply"
+       style="background-image: radial-gradient(circle at 24px 24px, rgba(33,70,75,.25) 2px, transparent 3px);
+              background-size: 64px 64px;"></div>
+
+  <!-- Text content -->
+  <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 hero-pad py-20 md:py-32">
+    <div class="max-w-2xl text-white translate-x-[-0.5rem] md:translate-x-[-1rem]">
+      <!-- Title -->
+      <h1 class="font-['Playfair_Display'] text-5xl md:text-7xl font-bold leading-tight text-white drop-shadow-md">
+        From our hook to your home
+      </h1>
+
+      <!-- Subheading -->
+      <p class="font-['Inter'] text-lg md:text-xl text-white/90 max-w-xl mt-4">
+        Thoughtful crochet that stays beautiful long after the unboxing
+      </p>
+
+      <!-- CTAs -->
+      <div class="mt-10 flex flex-wrap gap-4">
+  <a href="{% url 'product_list' %}"
+     class="group inline-flex items-center justify-center rounded-full bg-[color:var(--ink)] px-8 py-3.5 text-base md:text-lg font-['Inter'] font-medium text-white shadow-md shadow-black/20
+            transition-all duration-300 ease-out hover:-translate-y-0.5 hover:scale-[1.04] hover:shadow-lg hover:shadow-[color:var(--ink)]/40 hover:bg-[color:var(--ink)]/95">
+    Shop Now
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+         class="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12l-3.75 3.75M3 12h18" />
+    </svg>
+  </a>
+
+  <a href="{% url 'product_list' %}?custom=true"
+     class="group inline-flex items-center justify-center rounded-full bg-[color:var(--sky)] px-8 py-3.5 text-base md:text-lg font-['Inter'] font-medium text-[color:var(--ink)]
+            shadow-md shadow-black/10 transition-all duration-300 ease-out
+            hover:-translate-y-0.5 hover:scale-[1.04] hover:shadow-lg hover:shadow-[color:var(--sky)]/50 hover:bg-[color:var(--sky)]/90">
+    Custom Order
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+         class="ml-2 h-5 w-5 transition-transform duration-300 group-hover:translate-x-1">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12l-3.75 3.75M3 12h18" />
+    </svg>
+  </a>
+</div>
+
     </div>
-  </section>
+  </div>
+</section>
 
   <!-- Featured Products -->
   <section class="py-20 bg-[#f9f9f9]">

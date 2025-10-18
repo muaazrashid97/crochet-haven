@@ -9,3 +9,6 @@ python manage.py runserver
 # Activate the virtual environment
 # For Windows:
 env\Scripts\activate
+
+# Run Virtual Environment Server
+python manage.py runserver
